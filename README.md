@@ -8,7 +8,7 @@
 * **Tutor**: Felipe Márquez Milán
 
 ## Videos 
-*[Video entrega 1] (https://youtu.be/ZvxQnh-sigQ) 
+* [Video entrega 1] (https://youtu.be/ZvxQnh-sigQ) 
 
 
 ## Getting started
