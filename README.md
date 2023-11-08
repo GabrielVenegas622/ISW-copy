@@ -12,3 +12,4 @@ Puede acceder a la _Wiki_ mediante el siguiente [enlace](https://gitlab.inf.utfs
 
 ## Videos 
 * [Entrega H1](https://youtu.be/ZvxQnh-sigQ) 
+* [Entrega H4](https://youtu.be/e84w7gc4u50)
