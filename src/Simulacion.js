@@ -15,7 +15,6 @@ function Simulacion( ){
     const [showResult, setShowResult] = useState(false);
 
     const fetchUFValue = async () => {
-
         try {
             const response = await fetch('https://api.cmfchile.cl/api-sbifv3/recursos_api/uf?apikey=0e425b4c9e18ca3a1bfa76cd0d02a5cf21cdf8cf&formato=json');
             const data = await response.json();
@@ -25,10 +24,7 @@ function Simulacion( ){
             console.error('Error:', error);
         }
     };
-
-
     useEffect(() => {
-
         const fetchData = async () => {
            const au = await fetchUFValue();
            if (au) {
@@ -40,12 +36,16 @@ function Simulacion( ){
 
     const calculateCuotaUF = () => {
         //Aqui calculamos la weaita
-        const cuota = (valorCredito) / ((1-(1+tasaMensual)**(-plazo))/tasaMensual)
+        console.log(valorCredito)
+        console.log(plazo)
+        console.log(tasaMensual)
+        //Aqui calculamos la weaita
+
+        const cuota = (valorCredito) / ((1-((1+tasaMensual/100)**(-plazo)))/(tasaMensual/100))
         setCuotaUF(cuota)
+        console.log(cuota)
         setShowResult(true)
-
     }
-
     return (
         <div class= 'col-md-6 mx-auto'>
 
@@ -53,7 +53,6 @@ function Simulacion( ){
                     <div class="card-header">
                         Simulación de préstamo 
                     </div>
-
                     <div class="card-body">
 
                     <div class="container text-center">
@@ -92,10 +91,7 @@ function Simulacion( ){
                         
                     </div>
                 </div>
-
         </div>
-        
-
     );
 
 };
