@@ -19,7 +19,7 @@ function Simulacion( ){
         try {
             const response = await fetch('https://api.cmfchile.cl/api-sbifv3/recursos_api/uf?apikey=0e425b4c9e18ca3a1bfa76cd0d02a5cf21cdf8cf&formato=json');
             const data = await response.json();
-            return parseFloat(data.UFs[0].Valor);
+            return parseFloat(data.UFs[0].Valor)*1000;
     
         } catch (error) {
             console.error('Error:', error);
@@ -75,7 +75,7 @@ function Simulacion( ){
                                 <label for="floatingPassword">Plazo (meses)</label>
                             </div>
                             <div class="form-floating mb-2">
-                                <input type="number" class="form-control" id="floatingInput" placeholder="Tasa Mensual" onChange={(e) => setTasaMensual(e.target.value)}></input>
+                                <input type="number" class="form-control" id="floatingInput" placeholder="Tasa Mensual" onChange={(e) => setTasaMensual((e.target.value)/100)}></input>
                                 <label for="floatingInput">Tasa Mensual</label>
                             </div>
                         </div>
