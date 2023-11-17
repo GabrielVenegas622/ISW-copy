@@ -5,6 +5,7 @@ import NavBar from './components/NavBar.js'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import GridComplexExample from "./components/Solicitud.js"
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
+import H2 from "./H2/H2.js"
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <Routes>
           <Route path='/simulacion' element={ <Simulacion/>}/>
           <Route path ='/registroPrestamo' element={ <GridComplexExample/>}/>
+          <Route path ='/solicitudes' element={ <H2/>}/>
 
         </Routes>
       </BrowserRouter>     

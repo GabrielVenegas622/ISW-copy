@@ -10,6 +10,7 @@ function NavBar() {
             <Nav.Link href="simulacion">Simulación Préstamo</Nav.Link>
             <Nav.Link href="registroPrestamo">Registrar Préstamo</Nav.Link>
             <Nav.Link href="solicitudes">Solicitudes</Nav.Link>
+
           </Nav>
         </Container>
       </Navbar>
