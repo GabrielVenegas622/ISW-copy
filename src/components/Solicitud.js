@@ -5,8 +5,10 @@ import Row from 'react-bootstrap/Row';
 import { Container } from 'react-bootstrap';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import '../css/solicitud.css'
+import { useForm } from 'react-hook-form';
 
 function GridComplexExample() {
+  const {register, handleSubmit, formState: {errors}} = useForm();
     
   return (
     <Container className='styledContainer'>
@@ -14,17 +16,17 @@ function GridComplexExample() {
         <Row className="mb-3">
           <Form.Group as={Col} controlId="formGridEmail">
             <Form.Label>Nombre</Form.Label>
-            <Form.Control type="text" placeholder="Nombre" />
+            <Form.Control {...register('nombre')}type="text" placeholder="Nombre" />
           </Form.Group>
 
           <Form.Group as={Col} controlId="formGridPassword">
             <Form.Label>Apellido</Form.Label>
-            <Form.Control type="text" placeholder="Apellido" />
+            <Form.Control {...register('apellido')} type="text" placeholder="Apellido" />
           </Form.Group>
 
           <Form.Group as={Col} controlId="formGridPassword">
             <Form.Label>RUT</Form.Label>
-            <Form.Control type="text" placeholder="" />
+            <Form.Control {...register('RUT')} type="text" placeholder="" />
           </Form.Group>
           
         </Row>
@@ -32,48 +34,46 @@ function GridComplexExample() {
         <Row className="mb-3">
           <Form.Group as={Col} controlId="formGridCity">
             <Form.Label >Ciudad</Form.Label>
-            <Form.Control placeholder="Ciudad" />
+            <Form.Control {...register('Ciudad')} type = 'text' placeholder="Ciudad" />
           </Form.Group>
 
           <Form.Group as={Col} controlId="formGridState">
             <Form.Label>Comuna</Form.Label>
-            <Form.Control placeholder="Comuna"></Form.Control>
+            <Form.Control {...register('Comuna')} placeholder="Comuna" type = 'text'></Form.Control>
           </Form.Group>
 
           <Form.Group as={Col} controlId="formGridPassword">
             <Form.Label>Número telefonico</Form.Label>
-            <Form.Control type="text" placeholder="Teléfono" />
+            <Form.Control {...register('NumeroTel')} type="text" placeholder="Teléfono" />
           </Form.Group>
         </Row>
 
         <Row className='mb-3'>
           <Form.Group as={Col} controlId="formGridEmail">
             <Form.Label>Calle</Form.Label>
-            <Form.Control type="text" placeholder="Calle" />
+            <Form.Control {...register('Calle')} type="text" placeholder="Calle" />
           </Form.Group>
 
           <Form.Group as={Col} controlId="formGridEmail">
             <Form.Label>Número</Form.Label>
-            <Form.Control type="text" placeholder="Número de casa" />
+            <Form.Control {...register('NumeroCasa')} type="text" placeholder="Número de casa" />
           </Form.Group>
         </Row>
         
-  
-    
         <Row className="mb-3">
           <Form.Group as={Col} controlId="formGridCity">
             <Form.Label>Monto en UF</Form.Label>
-            <Form.Control />
+            <Form.Control {...register('Monto')} type='number'/>
           </Form.Group>
 
           <Form.Group as={Col} controlId="formGridState">
             <Form.Label>Tasa Mensual</Form.Label>
-            <Form.Control ></Form.Control>
+            <Form.Control {...register('Tasa')} type='number' ></Form.Control>
           </Form.Group>
 
           <Form.Group as={Col} controlId="formGridState">
             <Form.Label>Plazo</Form.Label>
-            <Form.Control ></Form.Control>
+            <Form.Control {...register('Plazo')} type='number'></Form.Control>
           </Form.Group>
 
           <Form.Group as={Col} controlId="formGridState">
@@ -86,7 +86,7 @@ function GridComplexExample() {
             <option>C</option>
             <option>D</option>
           </Form.Select>
-        </Form.Group>
+          </Form.Group>
         </Row>
           <Form.Label>Comentarios del Analista</Form.Label>
           <FloatingLabel controlId="floatingTextarea2" label="Comentario">
