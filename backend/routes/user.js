@@ -1,5 +1,4 @@
 const router = require("express").Router();
-const { restart } = require("nodemon");
 const{User, validate} = require("../models/user"); 
 const bcrypt = require("bcrypt");
 
