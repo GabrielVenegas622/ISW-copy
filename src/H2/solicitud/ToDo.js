@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function ToDo(category, ii) {
     const criterios = {
-        'S+': ['Criterio S+1', "Criterio S+2", "Criterio S+3"],
+        'S': ['Criterio S+1', "Criterio S+2", "Criterio S+3"],
         'A': ["Criterio A1", "Criterio A2", "Criterio A3"],
         'B': ["Criterio B1", "Criterio B2", "Criterio B3"],
         'C': ["Criterio C1", "Criterio C2", "Criterio C3"]

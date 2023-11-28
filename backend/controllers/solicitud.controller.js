@@ -12,7 +12,8 @@ const addSolicitud = async (req,res) =>{
 const getAllSolicitudes =  async (req,res) =>{
     await solicitudSchema
     .find()
-    .then((data) => res.json(data))
+    .then((data) =>
+    res.json({ solicitudes: data }))
     .catch((error) => res.json({message:error}))
 }
 

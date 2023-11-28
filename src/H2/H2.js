@@ -1,36 +1,65 @@
 import Solicitud from "./solicitud/Solicitud";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Solicitudes } from "../Api/solicitudesFront";
+import { useState, useEffect } from "react";
 
 
 function H2() {
-    const data = Solicitudes();
-    console.log("AAAAAAAAAAAAAA",data)
-    console.log(Array.isArray(data))
+    const [data, setData] = useState([]);
+    const [update, setUpdate] = useState(0);
+
+    useEffect(() => {
+        const fetchData = async () => {
+          try {
+            const result = await Solicitudes();
+            
+            setData(result.data.solicitudes);
+            console.log("los miau 🤨", result.data.solicitudes);
+
+          } catch (error) {
+            console.error('Error fetching data:', error.message);
+          }
+        };
+    
+        fetchData();
+      }, []);
+    
+    
 
 
-    function desplegarSolicitudes(data){
-        return(
-        <div class="container">
-            <h1>Solicitudes Pendientes: </h1>
-            <div class="row row-cols-1 row-cols-md-5 g-4">
-                    {data.map((obj, index) => (
-                        <div class='col'>
-                            <Solicitud
-                                index= {index}
-                                name={obj.name}
-                                category={obj.category}
-                            />
-                        </div>
-                    ))}
+    function desplegarSolicitudes(data) {
+        let content;
+      
+        if (!data) {
+          content = <p>No hay solicitudes disponibles.</p>;
+        } else {
+            console.log("AAAAAAAAAAAAAA",data)
+            console.log(Array.isArray(data.solicitudes))
+          content = data.map((obj, index) => (
+            <div className='col' key={index}>
+              <Solicitud
+                index={index}
+                name={obj.nombre}
+                category={obj.Categoria}
+              />
             </div>
-        </div>
-
+          ));
+        }
+      
+        return (
+          <div className="container">
+            <h1>Solicitudes Pendientes: </h1>
+            <div className="row row-cols-1 row-cols-md-5 g-4">
+              {content}
+            </div>
+          </div>
         );
-    };
-    return(
+      }
+
+
+
+    return (
         desplegarSolicitudes(data)
     );
-
 };
 export default H2;
