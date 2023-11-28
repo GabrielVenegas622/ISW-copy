@@ -6,13 +6,25 @@ import { Container } from 'react-bootstrap';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import '../css/solicitud.css'
 import { useForm } from 'react-hook-form';
+import { agregarSolicitud } from '../Api/solicitudesFront';
 
 function GridComplexExample() {
   const {register, handleSubmit, formState: {errors}} = useForm();
+  
+  const onSubmit = handleSubmit( async (values) =>{
+    console.log("Apretaste el boton");
+    try {
+      await agregarSolicitud(values);
+      console.log("Solicitud Agregada correctamente", values);
+    } catch (error) {
+      console.log("Error al mandar la solicitud", error);
+    }
     
+  })
+
   return (
     <Container className='styledContainer'>
-      <Form>
+      <Form onSubmit={onSubmit}>
         <Row className="mb-3">
           <Form.Group as={Col} controlId="formGridEmail">
             <Form.Label>Nombre</Form.Label>
@@ -78,7 +90,7 @@ function GridComplexExample() {
 
           <Form.Group as={Col} controlId="formGridState">
           <Form.Label>Categoría Cliente</Form.Label>
-          <Form.Select defaultValue="Choose...">
+          <Form.Select {...register('Categoria')} defaultValue="Choose...">
             <option>Selecciona</option>
             <option>S</option>
             <option>A</option>
@@ -91,13 +103,14 @@ function GridComplexExample() {
           <Form.Label>Comentarios del Analista</Form.Label>
           <FloatingLabel controlId="floatingTextarea2" label="Comentario">
             <Form.Control
+              {...register('Comentario')}
               as="textarea"
               placeholder="Leave a comment here"
               style={{ height: '100px' }}
             />
           </FloatingLabel>
 
-        <Button variant="primary" type="submit" style={{ marginTop: '20px', marginBottom: '20px' }}>
+        <Button type="submit" style={{ marginTop: '20px', marginBottom: '20px' }}>
           Generar solicitud
         </Button>
       </Form>
