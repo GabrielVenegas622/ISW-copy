@@ -9,6 +9,13 @@ const addSolicitud = async (req,res) =>{
     await solicitud.save().then((data) => res.json(data)).catch((error) => res.json({message: error}))
 }
 
+const getAllSolicitudes =  async (req,res) =>{
+    await solicitudSchema
+    .find()
+    .then((data) => res.json(data))
+    .catch((error) => res.json({message:error}))
+}
+
 const validateSol = (data) =>{
     const schema = Joi.object({
         nombre: Joi.string().required().label("Nombre"),
@@ -29,4 +36,4 @@ const validateSol = (data) =>{
     return schema.validate(data);
 }
 
-module.exports = {addSolicitud}
+module.exports = {addSolicitud, getAllSolicitudes}
