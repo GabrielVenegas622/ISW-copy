@@ -25,8 +25,6 @@ function H2() {
 
         );
     }
-
-    
     return(
         desplegarSolicitudes(data)
     );

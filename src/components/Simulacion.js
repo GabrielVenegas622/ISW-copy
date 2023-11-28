@@ -47,6 +47,7 @@ function Simulacion( ){
         setShowResult(true)
     }
     return (
+        
         <div class= 'col-md-6 mx-auto'>
 
             <div class="card text-center">
