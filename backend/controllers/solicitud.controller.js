@@ -32,6 +32,8 @@ const validateSol = (data) =>{
         Plazo: Joi.number().required().label("Plazo"),
         Categoria: Joi.string().required().label("Categoría"),
         Comentario: Joi.string().required().label("Comentario"),
+        ValorCreditoUF: Joi.number().optional().label("Valor Credito UF"),
+        ValorCreditoCLP: Joi.number().optional().label("Valor Credito CLP"),
     });
 
     return schema.validate(data);

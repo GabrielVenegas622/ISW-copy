@@ -7,17 +7,41 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import '../css/solicitud.css'
 import { useForm } from 'react-hook-form';
 import { agregarSolicitud } from '../Api/solicitudesFront';
+import { useState } from 'react';
+import { fetchUFValue } from '../Api/solicitudesFront';
+
 
 function GridComplexExample() {
   const {register, handleSubmit, formState: {errors}} = useForm();
+  const [errorMessage, setErrorMessage] = useState('');
+  const [correctMessage, setcorrectMessage] = useState('');
+
+
   
   const onSubmit = handleSubmit( async (values) =>{
     console.log("Apretaste el boton");
     try {
+      const UF = await fetchUFValue();
+      const valorCredito = values.Monto;
+      const tasaMensual = values.Tasa;
+      const plazo = values.Plazo;
+      const cuota = (valorCredito) / ((1-((1+tasaMensual/100)**(-plazo)))/(tasaMensual/100))
+      values.ValorCreditoUF = cuota;
+      console.log(typeof cuota);
+      console.log(plazo);
+      console.log(tasaMensual);
+      console.log(valorCredito);
+      const valorCLP = cuota * UF;
+      console.log("VALOR UF" + UF);
+      values.ValorCreditoCLP = valorCLP;
       await agregarSolicitud(values);
       console.log("Solicitud Agregada correctamente", values);
+      setErrorMessage('');
+      setcorrectMessage('Solicitud agregada exitosamente')
     } catch (error) {
+      setcorrectMessage('');
       console.log("Error al mandar la solicitud", error);
+      setErrorMessage(error.response.data.message);
     }
     
   })
@@ -25,6 +49,8 @@ function GridComplexExample() {
   return (
     <Container className='styledContainer'>
       <Form onSubmit={onSubmit}>
+        {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
+        {correctMessage && <p style={{ color: 'green' }}>{correctMessage}</p>}
         <Row className="mb-3">
           <Form.Group as={Col} controlId="formGridEmail">
             <Form.Label>Nombre</Form.Label>

@@ -1,3 +1,4 @@
+const { number } = require("joi");
 const mongosee = require("mongoose");
 
 const solicitudSchema = new mongosee.Schema({
@@ -56,6 +57,12 @@ const solicitudSchema = new mongosee.Schema({
     Estado: {
         type:String,
     },
+    ValorCreditoUF: {
+        type: Number,
+    },
+    ValorCreditoCLP:{
+        type: Number
+    }
 },{
     timestamps:true
 });
