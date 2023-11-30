@@ -22,10 +22,7 @@ function H2() {
         };
     
         fetchData();
-      }, []);
-    
-    
-
+      }, [,update]);
 
     function desplegarSolicitudes(data) {
         let content;
@@ -33,14 +30,26 @@ function H2() {
         if (!data) {
           content = <p>No hay solicitudes disponibles.</p>;
         } else {
-            console.log("AAAAAAAAAAAAAA",data)
-            console.log(Array.isArray(data.solicitudes))
+            //console.log("AAAAAAAAAAAAAA",data)
+            //console.log(Array.isArray(data.solicitudes))
           content = data.map((obj, index) => (
             <div className='col' key={index}>
               <Solicitud
                 index={index}
                 name={obj.nombre}
+                apellido={obj.apellido}
                 category={obj.Categoria}
+                RUT={obj.RUT}
+                Comuna={obj.Comuna}
+                Ciudad={obj.Ciudad}
+                Monto={obj.Monto}
+                Plazo={obj.Plazo}
+                Tasa={obj.Tasa}
+                ValorCreditoUF={obj.ValorCreditoUF}
+                ValorCreditoCLP={obj.ValorCreditoCLP}
+                update={update}
+                setUpdate= {setUpdate}
+                id={obj._id}
               />
             </div>
           ));
