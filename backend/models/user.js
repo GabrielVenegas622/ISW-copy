@@ -8,6 +8,7 @@ const userSchema = new mongoose.Schema({
     lastName: {type: String, required: true},
     email: {type:String, required:true},
     password: {type:String, required: true},
+    role : {type: String},
 });
 
 userSchema.methods.generateAuthToken = function (){
@@ -24,6 +25,7 @@ const validate = (data) =>{
         lastName: Joi.string().required().label("Last name"),
         email: Joi.string().email().required().label("email"),
         password: passwordComplexity().required().label("Password"),
+        role: Joi.string().optional().label("Rol del usuario") // Puede ser supervisor(S), agente de ventas(V), agente comercial(C).
     });
     return schema.validate(data);
 };

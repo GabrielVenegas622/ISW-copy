@@ -1,7 +1,7 @@
 import {Navbar, Nav, Container, Button } from 'react-bootstrap'; 
 import { useNavigate} from "react-router-dom"
 
-function NavBar() {
+function NavBarSupervisor() {
   const navigate = useNavigate();
 
   const handleLogout = () =>{
@@ -17,6 +17,7 @@ function NavBar() {
           <Nav className="me-auto">
             <Nav.Link href="simulacion">Simulación Préstamo</Nav.Link>
             <Nav.Link href="registroPrestamo">Registrar Préstamo</Nav.Link>
+            <Nav.Link href="solicitudes">Solicitudes</Nav.Link>
 
           </Nav>
           <Button variant= "outline-light" onClick= {handleLogout}>
@@ -27,4 +28,4 @@ function NavBar() {
   );
 }
 
-export default NavBar;
+export default NavBarSupervisor;
