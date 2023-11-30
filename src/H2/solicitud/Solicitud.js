@@ -8,6 +8,7 @@ function Solicitud(prop){
     const {name, category, index, apellido, RUT, comentario, Comuna, Ciudad, Monto, Plazo, Tasa, ValorCreditoUF, ValorCreditoCLP, update, setUpdate, id} = prop;
 
     const modalId = `staticBackdrop-${id}${index}`;
+    const modal2ndId = `staticBackdrop-${id}${index}2nd`;
     const aprobarId = `staticBackdrop-aprobar${id}${index}`;
     const eliminarId = `staticBackdrop-eliminar${id}${index}`;
     const derivarId = `staticBackdrop-derivar${id}${index}`;
@@ -38,8 +39,13 @@ function Solicitud(prop){
       const handleDerivarClick = async () => {
         try {
           console.log(`SOLICITUD de ${name} ${apellido} DERIVADA!`);
+          var sugerencias = document.getElementById(`floatingTextarea${derivarId}`).value;
+
+          console.log('Sugerencias:', sugerencias);
           await actualizarSolicitud(id, '2');
+
           setUpdate(prevUpdate => prevUpdate + 1);
+
         } catch (error) {
           console.error('Error al derivar la solicitud:', error);
           // Manejar el error según tus necesidades
@@ -142,20 +148,39 @@ function Solicitud(prop){
                             </div>
                             </div>
                         </div>
-                            <p>Esta sería la to do List para ayudar al supervisor:</p>
+                            <p>Esta sería la to do List para ayudar al Agente Comercial:</p>
                             {ToDo(category, index)}
-                            ...
                         </div>
-                        <div className="modal-footer">
-                            <button type="button" id={eliminarId} className="btn btn-secondary" data-bs-dismiss="modal">Rechazar</button>
-                            <button type="button" id={derivarId} className="btn btn-secondary" data-bs-dismiss="modal">Derivar</button>
-                            <button type="button" id={aprobarId} className="btn btn-primary" data-bs-dismiss="modal">Aprobar</button>
-                        </div>
+                            <div className="modal-footer">
+                                <button type="button" id={eliminarId} className="btn btn-secondary" data-bs-dismiss="modal">Rechazar</button>
+                                <button type="button" id={`${derivarId}prev`} className="btn btn-secondary" data-bs-target={`#${modal2ndId}`} data-bs-dismiss="modal" data-bs-toggle="modal">Derivar</button>
+                                <button type="button" id={aprobarId} className="btn btn-primary" data-bs-dismiss="modal">Aprobar</button>
+                            </div>
                         </div>
                     </div>
                     </div>
             </div>
+            <div className="modal fade" id={`${modal2ndId}`} aria-hidden="true" aria-labelledby={modal2ndId} tabIndex="-1">
+                <div className="modal-dialog modal-dialog-centered">
+                    <div className="modal-content">
+                    <div className="modal-header">
+                        <h1 className="modal-title fs-5" id={modal2ndId}>Derivación Solicitud de {name} {apellido}</h1>
+                        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div className="modal-body">
+                        <div className="form-floating">
+                            <textarea className="form-control" placeholder="Leave a comment here" id={`floatingTextarea${derivarId}`}></textarea>
+                            <label htmlFor={`floatingTextarea${derivarId}`}>Sugerencias para el Supervisor</label>
+                        </div>
+                    </div>
+                    <div className="modal-footer">
+                        <button type="button" id={derivarId} className="btn btn-primary" data-bs-dismiss="modal">Enviar</button>
+                    </div>
+                    </div>
+                </div>
+            </div>
         </div>
+        
     );
 };
 
