@@ -23,9 +23,6 @@ function H2() {
     
         fetchData();
       }, []);
-    
-    
-
 
     function desplegarSolicitudes(data) {
         let content;
@@ -40,7 +37,16 @@ function H2() {
               <Solicitud
                 index={index}
                 name={obj.nombre}
+                apellido={obj.apellido}
                 category={obj.Categoria}
+                RUT={obj.RUT}
+                Comuna={obj.Comuna}
+                Ciudad={obj.Ciudad}
+                Monto={obj.Monto}
+                Plazo={obj.Plazo}
+                Tasa={obj.Tasa}
+                ValorCreditoUF={obj.ValorCreditoUF}
+                ValorCreditoCLP={obj.ValorCreditoCLP}
               />
             </div>
           ));

@@ -4,11 +4,11 @@ import ToDo from './ToDo';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function Solicitud(prop){
-    const {name, category, index} = prop;
+    const {name, category, index, apellido, RUT, comentario, Comuna, Ciudad, Monto, Plazo, Tasa, ValorCreditoUF, ValorCreditoCLP} = prop;
     const modalId = `staticBackdrop-${index}`;
     
     return (
-        <div class="card text-center mb-3" style={{width: '15rem'}}>
+        <div class="card text-center mb-3" >
             <div class="card-body">
                 <h5 class="card-title">{name}</h5>
                 <p class="card-text">Categoría {category}</p>
@@ -21,7 +21,57 @@ function Solicitud(prop){
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <p>##aquí va la infomación del préstamo##</p>
+
+                        <div class="card border-primary mb-3">
+                            <div class="card-header text-primary">Información Cliente:</div>
+                            <div class="card-body">
+                                <div class="container">
+                                    <div class="row justify-content-md-center">
+                                                <div class="col-md-auto">
+                                                    <h6 class="card-title">{RUT}</h6>
+                                                </div>
+                                                <div class="col-md-auto">
+                                                    <h6 class="card-title">{name} {apellido}</h6>
+                                                </div>
+                                                <div class="col-md-auto">
+                                                    <h6 class="card-title">{Comuna}, {Ciudad}</h6>
+                                                </div>
+                                    </div>
+                                    <h6 class="card-title text-primary">Solicitud de Préstamo:</h6>
+                                    <div class="card">
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item">
+                                                <div class="row">
+                                                    <div class="col">
+                                                            Crédito (UF):<br></br>
+                                                            {Monto}
+                                                    </div>
+                                                    <div class="col">
+                                                            Plazo (Meses):<br></br>
+                                                            {Plazo}
+                                                    
+                                                    </div>
+                                                    <div class="col">
+                                                            Tasa:<br></br>
+                                                            {Tasa}%
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <div class="row">
+                                                    <div class="col">
+                                                            Cuota (UF): <br></br>{ValorCreditoUF}
+                                                    </div>
+                                                    <div class="col">
+                                                                Cuota (CLP): <br></br>{ValorCreditoCLP}
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                            </div>
+                            </div>
+                        </div>
                             <p>Esta sería la to do List para ayudar al supervisor:</p>
                             {ToDo(category, index)}
                             ...
