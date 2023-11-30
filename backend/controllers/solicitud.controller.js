@@ -17,6 +17,20 @@ const getAllSolicitudes =  async (req,res) =>{
     .catch((error) => res.json({message:error}))
 }
 
+const actualizarSolicitud = async (req,res) =>{
+    const {id} = req.params;
+    const {Estado} = req.body;
+    solicitudSchema.updateOne({_id: id}, {$set: {Estado}})
+    .then((data) => res.json(data))
+    .catch((error) => res.json({message:error}));
+}
+
+const deleteSolicitud = async (req, res) =>{
+   const solicitud = await solicitudSchema.findByIdAndDelete(req.params.id);
+   if(!solicitud) return res.status(404).res({message: "No se encontró el tutor"})
+   res.json({message: "Usuario eliminado"});
+}
+
 const validateSol = (data) =>{
     const schema = Joi.object({
         nombre: Joi.string().required().label("Nombre"),
@@ -34,9 +48,10 @@ const validateSol = (data) =>{
         Comentario: Joi.string().required().label("Comentario"),
         ValorCreditoUF: Joi.number().optional().label("Valor Credito UF"),
         ValorCreditoCLP: Joi.number().optional().label("Valor Credito CLP"),
+        Estado: Joi.number().optional().label("Estado"),
     });
 
     return schema.validate(data);
 }
 
-module.exports = {addSolicitud, getAllSolicitudes}
+module.exports = {addSolicitud, getAllSolicitudes, actualizarSolicitud, deleteSolicitud}

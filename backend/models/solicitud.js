@@ -56,6 +56,7 @@ const solicitudSchema = new mongosee.Schema({
     },
     Estado: {
         type:String,
+        default: 0,
     },
     ValorCreditoUF: {
         type: Number,

@@ -21,7 +21,7 @@ function App() {
           {user && (rol === "comercial" || rol === "ventas") && <NavBar/>}
           {user && rol === "supervisor" && <NavBarSupervisor/>}
         <Routes>
-          {user && <Route path='/'/>}
+          {user && <Route path='/'element= {<Bienvenida/>}/>}
           <Route path='/simulacion' element={ <Simulacion/>}/>
           <Route path ='/registroPrestamo' element={ <GridComplexExample/>}/>
           <Route path ='/solicitudes' element={ <H2/>}/>
