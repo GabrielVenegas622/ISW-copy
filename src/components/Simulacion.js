@@ -11,7 +11,7 @@ function Simulacion( ){
     const [plazo, setPlazo] = useState(0);
     const [tasaMensual, setTasaMensual] = useState(0);
     const [cuotaUF, setCuotaUF] = useState(0);
-
+    const [cuotaCLP, setCuotaCLP] = useState(0);
     const [showResult, setShowResult] = useState(false);
 
     const fetchUFValue = async () => {
@@ -42,7 +42,8 @@ function Simulacion( ){
         //Aqui calculamos la weaita
 
         const cuota = (valorCredito) / ((1-((1+tasaMensual/100)**(-plazo)))/(tasaMensual/100))
-        setCuotaUF(cuota)
+        setCuotaCLP(Math.round(cuota * currentUF));
+        setCuotaUF(cuota.toFixed(2))
         console.log(cuota)
         setShowResult(true)
     }
@@ -84,7 +85,10 @@ function Simulacion( ){
 
                         <button className='btn btn-primary' onClick={calculateCuotaUF}> Generar</button>
                         {showResult && (
-                            <p className='card-text'>La cuota calculada es: {cuotaUF} </p>
+                            <div>
+                                <p className='card-text'>La cuota calculada en UF es: {cuotaUF}</p>
+                                <p className='card-text'>La cuota calculada en CLP es: {cuotaCLP}</p>
+                            </div>
                         )}
                         
                     </div>

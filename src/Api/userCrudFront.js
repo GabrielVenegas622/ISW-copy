@@ -29,3 +29,4 @@ export const updateUsuario = async (id, newData) => {
         throw error;
     }
 }
+

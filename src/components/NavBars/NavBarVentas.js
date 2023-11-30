@@ -11,7 +11,7 @@ function NavBar() {
     window.location.reload();
   }
   return (
-    <Navbar bg="dark" data-bs-theme="dark" style="background-color: #3bb19b;">
+    <Navbar data-bs-theme="dark" style={{ backgroundColor: '#3bb19b' }}>
         <Container>
           <Navbar.Brand href="home">Financiera la clave</Navbar.Brand>
           <Nav className="me-auto"> 

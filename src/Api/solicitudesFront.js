@@ -8,6 +8,8 @@ export const actualizarSolicitud = (id, state) => axios.put(`/updateEstado/${id}
 
 export const actualizarComment = (id, comment) => axios.put(`/updateComment/${id}`, {Comentario: comment})
 
+export const deleteSolicitud = (id) => axios.delete(`/deleteSolicitud/${id}`)
+
 export const fetchUFValue = async () => {
     try {
       const response = await fetch('https://api.cmfchile.cl/api-sbifv3/recursos_api/uf?apikey=0e425b4c9e18ca3a1bfa76cd0d02a5cf21cdf8cf&formato=json');

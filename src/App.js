@@ -9,6 +9,7 @@ import GridComplexExample from "./components/Solicitud.js"
 import { Route, Routes, BrowserRouter, Navigate } from 'react-router-dom';
 import H2 from "./H2/H2.js"
 import H2Super from './H2/H2Super.js';
+import H2Aprobada from './H2/H2Aprobadas';
 import Signup from './components/signup/index.jsx';
 import Login from './components/Login/index.jsx';
 import Bienvenida from './components/bienvenida/BIenvenida';
@@ -30,6 +31,7 @@ function App() {
           <Route path ='/registroPrestamo' element={ <GridComplexExample/>}/>
           <Route path ='/solicitudes' element={ <H2/>}/>
           <Route path ='/solicitudesSuper' element={ <H2Super/>}/>
+          <Route path ='/solicitudesAprobadas' element={ <H2Aprobada/>}/>
           <Route path='/signup' element= {<Signup/>}/>
           <Route path='/login' element= {<Login/>}/>
           <Route path='/home' element= {<Bienvenida/>}/>
