@@ -22,7 +22,7 @@ const Signup = () => {
 		try {
 			const url = "http://localhost:8000/api/users";
 			const { data: res } = await axios.post(url, data);
-			navigate("/login");
+			navigate("/users");
 			console.log(res.message);
 		} catch (error) {
 			if (
@@ -39,19 +39,19 @@ const Signup = () => {
 		<div className={styles.signup_container}>
 			<div className={styles.signup_form_container}>
 				<div className={styles.left}>
-					<h1>Welcome Back</h1>
-					<Link to="/login">
+					<h1>Administrar Usuarios</h1>
+					<Link to="/users">
 						<button type="button" className={styles.white_btn}>
-							Sing in
+							Usuarios
 						</button>
 					</Link>
 				</div>
 				<div className={styles.right}>
 					<form className={styles.form_container} onSubmit={handleSubmit}>
-						<h1>Create Account</h1>
+						<h1>Crear Cuenta</h1>
 						<input
 							type="text"
-							placeholder="First Name"
+							placeholder="Nombre"
 							name="firstName"
 							onChange={handleChange}
 							value={data.firstName}
@@ -60,7 +60,7 @@ const Signup = () => {
 						/>
 						<input
 							type="text"
-							placeholder="Last Name"
+							placeholder="Apellido"
 							name="lastName"
 							onChange={handleChange}
 							value={data.lastName}
@@ -78,7 +78,7 @@ const Signup = () => {
 						/>
 						<input
 							type="password"
-							placeholder="Password"
+							placeholder="Contraseña"
 							name="password"
 							onChange={handleChange}
 							value={data.password}
@@ -100,7 +100,7 @@ const Signup = () => {
 						
 						{error && <div className={styles.error_msg}>{error}</div>}
 						<button type="submit" className={styles.green_btn}>
-							Sing Up
+							Crear
 						</button>
 					</form>
 				</div>

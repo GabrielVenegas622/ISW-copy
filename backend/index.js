@@ -6,6 +6,7 @@ const connection = require("./db");
 const userRoutes = require('./routes/user');
 const authRouter = require('./routes/auth');
 const solicitudRouter = require("./routes/solicitudes");
+const userCrud = require("./routes/solicitudesCRUD")
 
 
 //conection dataBase
@@ -20,6 +21,7 @@ app.use(cors());
 app.use("/api/users", userRoutes);
 app.use("/api/auth", authRouter);
 app.use("/api", solicitudRouter);
+app.use("/api", userCrud);
 
 
 const port = process.env.PORT || 8000;
