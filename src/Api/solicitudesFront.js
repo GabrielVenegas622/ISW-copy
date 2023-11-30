@@ -4,6 +4,7 @@ export const agregarSolicitud = solicitud => axios.post('/addSolicitud', solicit
 
 export const Solicitudes = () => axios.get('/getSolicitud');
 
+export const actualizarSolicitud = (id, state) => axios.put(`/updateEstado/${id}`, {Estado: state})
 
 export const fetchUFValue = async () => {
     try {
