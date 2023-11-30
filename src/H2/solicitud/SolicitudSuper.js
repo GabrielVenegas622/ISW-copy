@@ -122,8 +122,12 @@ function SolicitudSuper(prop){
                             </div>
                             </div>
                         </div>
-                        <h4 className="border-warning">Sugerencia a revisar: </h4>
-                            {comentario}
+                        <h4 className="text-warning">Sugerencia a revisar: </h4>
+                            <div className="card  border-warning">
+                                    <div className="card-body ">
+                                    {comentario}
+                                    </div>
+                            </div>
                         </div>
                             <div className="modal-footer">
                                 <button type="button" id={eliminarId} className="btn btn-secondary" data-bs-dismiss="modal">Rechazar</button>

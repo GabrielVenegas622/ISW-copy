@@ -7,15 +7,15 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 function SolicitudAprobada(prop){
     const {name, category, index, apellido, RUT, comentario, Comuna, Ciudad, Monto, Plazo, Tasa, ValorCreditoUF, ValorCreditoCLP, update, setUpdate, id} = prop;
 
-    const modalId = `staticBackdrop-SU${id}${index}`;
-    const aprobarId = `staticBackdrop-aprobarSU${id}${index}`;
-    const eliminarId = `staticBackdrop-eliminarSU${id}${index}`;
+    const modalId = `staticBackdrop-Ap${id}${index}`;
+    const revisarId = `staticBackdrop-revisar${id}${index}`;
+    const eliminarId = `staticBackdrop-eliminarAp${id}${index}`;
 
 
-    const handleAprobarClick = async () => {
+    const handleRevisarClick = async () => {
         try {
           console.log(`SOLICITUD de ${name} ${apellido} y id ${id} APROBADA!`);
-          await actualizarSolicitud(id, '1');
+          await actualizarSolicitud(id, '0');
           setUpdate(prevUpdate => prevUpdate + 1);
         } catch (error) {
           console.error('Error al aprobar la solicitud:', error);
@@ -26,7 +26,7 @@ function SolicitudAprobada(prop){
       const handleEliminarClick = async () => {
         try {
           console.log(`SOLICITUD de ${name} ${apellido} ELIMINADA!`);
-          await actualizarSolicitud(id, '0');
+          await deleteSolicitud(id);
           setUpdate(prevUpdate => prevUpdate + 1);
         } catch (error) {
           console.error('Error al eliminar la solicitud:', error);
@@ -34,24 +34,12 @@ function SolicitudAprobada(prop){
         }
       };
 
-      const deleteSolicitud = async () => {
-        try {
-          console.log("ELiminamos correctamente la solicitud")
-          await deleteSolicitud(id);
-          setUpdate(prevUpdate => prevUpdate + 1);
-        } catch (error) {
-          console.error('Error al eliminar solicitud:', error);
-          // Manejar el error según tus necesidades
-        }
-      };
-    
-
     useEffect(() => {
-        const aprobarBtn = document.getElementById(aprobarId);
+        const aprobarBtn = document.getElementById(revisarId);
         const eliminarBtn = document.getElementById(eliminarId);
 
         if (aprobarBtn) {
-        aprobarBtn.addEventListener("click", handleAprobarClick);
+        aprobarBtn.addEventListener("click", handleRevisarClick);
         }
 
         if (eliminarBtn) {
@@ -61,7 +49,7 @@ function SolicitudAprobada(prop){
         return () => {
         // Limpiar event listeners al desmontar el componente
         if (aprobarBtn) {
-            aprobarBtn.removeEventListener("click", handleAprobarClick);
+            aprobarBtn.removeEventListener("click", handleRevisarClick);
         }
         if (eliminarBtn) {
             eliminarBtn.removeEventListener("click", handleEliminarClick);
@@ -137,11 +125,15 @@ function SolicitudAprobada(prop){
                             </div>
                         </div>
                         <h4 className="border-warning">Sugerencia a revisar: </h4>
-                            {comentario}
+                            <div class="card">
+                                <div class="card-body">
+                                {comentario}
+                                </div>
+                            </div>
                         </div>
                             <div className="modal-footer">
-                                <button type="button" id={eliminarId} className="btn btn-secondary" data-bs-dismiss="modal">Revisión</button>
-                                <button type="button" id={eliminarId} className="btn btn-secondary" data-bs-dismiss="modal">Eliminar</button>
+                                <button type="button" id={revisarId} className="btn btn-secondary" data-bs-dismiss="modal">Revisión</button>
+                                <button type="button" id={eliminarId} className="btn btn-danger" data-bs-dismiss="modal">Eliminar</button>
                             </div>
                         </div>
                     </div>

@@ -30,8 +30,6 @@ function H2Aprobada() {
         if (!data) {
           content = <p>No hay solicitudes disponibles.</p>;
         } else {
-            //console.log("AAAAAAAAAAAAAA",data)
-            //console.log(Array.isArray(data.solicitudes))
           content = data.map((obj, index) => {
             if(obj.Estado === "1"){
               return (
