@@ -128,15 +128,6 @@ function GridComplexExample() {
           </Form.Select>
           </Form.Group>
         </Row>
-          <Form.Label>Comentarios del Analista</Form.Label>
-          <FloatingLabel controlId="floatingTextarea2" label="Comentario">
-            <Form.Control
-              {...register('Comentario')}
-              as="textarea"
-              placeholder="Leave a comment here"
-              style={{ height: '100px' }}
-            />
-          </FloatingLabel>
 
         <Button type="submit" style={{ marginTop: '20px', marginBottom: '20px' }}>
           Generar solicitud

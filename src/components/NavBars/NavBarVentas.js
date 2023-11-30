@@ -11,10 +11,10 @@ function NavBar() {
     window.location.reload();
   }
   return (
-    <Navbar bg="dark" data-bs-theme="dark">
+    <Navbar bg="dark" data-bs-theme="dark" style="background-color: #3bb19b;">
         <Container>
           <Navbar.Brand href="home">Financiera la clave</Navbar.Brand>
-          <Nav className="me-auto">
+          <Nav className="me-auto"> 
             <Nav.Link href="simulacion">Simulación Préstamo</Nav.Link>
             <Nav.Link href="registroPrestamo">Registrar Préstamo</Nav.Link>
 

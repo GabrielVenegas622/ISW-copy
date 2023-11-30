@@ -4,14 +4,12 @@ import { actualizarSolicitud, actualizarComment} from "../../Api/solicitudesFron
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-function Solicitud(prop){
+function SolicitudSuper(prop){
     const {name, category, index, apellido, RUT, comentario, Comuna, Ciudad, Monto, Plazo, Tasa, ValorCreditoUF, ValorCreditoCLP, update, setUpdate, id} = prop;
 
-    const modalId = `staticBackdrop-${id}${index}`;
-    const modal2ndId = `staticBackdrop-${id}${index}2nd`;
-    const aprobarId = `staticBackdrop-aprobar${id}${index}`;
-    const eliminarId = `staticBackdrop-eliminar${id}${index}`;
-    const derivarId = `staticBackdrop-derivar${id}${index}`;
+    const modalId = `staticBackdrop-SU${id}${index}`;
+    const aprobarId = `staticBackdrop-aprobarSU${id}${index}`;
+    const eliminarId = `staticBackdrop-eliminarSU${id}${index}`;
 
 
     const handleAprobarClick = async () => {
@@ -35,28 +33,10 @@ function Solicitud(prop){
           // Manejar el error según tus necesidades
         }
       };
-      
-      const handleDerivarClick = async () => {
-        try {
-          console.log(`SOLICITUD de ${name} ${apellido} DERIVADA!`);
-          var sugerencias = document.getElementById(`floatingTextarea${derivarId}`).value;
-
-          console.log('Sugerencias:', sugerencias);
-          await actualizarSolicitud(id, '2');
-          await actualizarComment(id, sugerencias);
-
-          setUpdate(prevUpdate => prevUpdate + 1);
-
-        } catch (error) {
-          console.error('Error al derivar la solicitud:', error);
-          // Manejar el error según tus necesidades
-        }
-      };
 
     useEffect(() => {
         const aprobarBtn = document.getElementById(aprobarId);
         const eliminarBtn = document.getElementById(eliminarId);
-        const derivarBtn = document.getElementById(derivarId);
 
         if (aprobarBtn) {
         aprobarBtn.addEventListener("click", handleAprobarClick);
@@ -64,10 +44,6 @@ function Solicitud(prop){
 
         if (eliminarBtn) {
         eliminarBtn.addEventListener("click", handleEliminarClick);
-        }
-
-        if (derivarBtn) {
-        derivarBtn.addEventListener("click", handleDerivarClick);
         }
 
         return () => {
@@ -78,18 +54,15 @@ function Solicitud(prop){
         if (eliminarBtn) {
             eliminarBtn.removeEventListener("click", handleEliminarClick);
         }
-        if (derivarBtn) {
-            derivarBtn.removeEventListener("click", handleDerivarClick);
-        }
         };
     }, [update,]);
     
     return (
-        <div className="card border-success text-center mb-3" >
-            <div className="card-body">
+        <div className="card border-warning text-center mb-3" >
+            <div className="card-body ">
                 <h5 className="card-title">{name}</h5>
                 <p className="card-text">Categoría {category}</p>
-                <button type="button" className="btn btn-success" data-bs-toggle="modal" data-bs-target={`#${modalId}`}> Revisar </button>
+                <button type="button" className="btn btn-warning " data-bs-toggle="modal" data-bs-target={`#${modalId}`}> Revisar </button>
                     <div className="modal fade" id={modalId} data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby={modalId} aria-hidden="true">
                     <div className="modal-dialog">
                         <div className="modal-content">
@@ -99,8 +72,8 @@ function Solicitud(prop){
                         </div>
                         <div className="modal-body">
 
-                        <div className="card border-success mb-3">
-                            <div className="card-header text-success">Información Cliente:</div>
+                        <div className="card border-warning mb-3">
+                            <div className="card-header border-warning">Información Cliente:</div>
                             <div className="card-body">
                                 <div className="container">
                                     <div className="row justify-content-md-center">
@@ -114,7 +87,7 @@ function Solicitud(prop){
                                                     <h6 className="card-title">{Comuna}, {Ciudad}</h6>
                                                 </div>
                                     </div>
-                                    <h6 className="card-title text-success">Solicitud de Préstamo:</h6>
+                                    <h6 className="card-title text-warning">Solicitud de Préstamo:</h6>
                                     <div className="card">
                                         <ul className="list-group list-group-flush">
                                             <li className="list-group-item">
@@ -149,40 +122,20 @@ function Solicitud(prop){
                             </div>
                             </div>
                         </div>
-                            <p>Esta sería la to do List para ayudar al Agente Comercial:</p>
-                            {ToDo(category, index)}
+                        <h4 className="border-warning">Sugerencia a revisar: </h4>
+                            {comentario}
                         </div>
                             <div className="modal-footer">
                                 <button type="button" id={eliminarId} className="btn btn-secondary" data-bs-dismiss="modal">Rechazar</button>
-                                <button type="button" id={`${derivarId}prev`} className="btn btn-warning" data-bs-target={`#${modal2ndId}`} data-bs-dismiss="modal" data-bs-toggle="modal">Derivar</button>
-                                <button type="button" id={aprobarId} className="btn btn-success" data-bs-dismiss="modal">Aprobar</button>
+                                <button type="button" id={aprobarId} className="btn btn-warning" data-bs-dismiss="modal">Aprobar</button>
                             </div>
                         </div>
                     </div>
                     </div>
-            </div>
-            <div className="modal fade" id={`${modal2ndId}`} aria-hidden="true" aria-labelledby={modal2ndId} tabIndex="-1">
-                <div className="modal-dialog modal-dialog-centered">
-                    <div className="modal-content">
-                    <div className="modal-header">
-                        <h1 className="modal-title fs-5" id={modal2ndId}>Derivación Solicitud de {name} {apellido}</h1>
-                        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div className="modal-body">
-                        <div className="form-floating">
-                            <textarea className="form-control" placeholder="Leave a comment here" id={`floatingTextarea${derivarId}`}></textarea>
-                            <label htmlFor={`floatingTextarea${derivarId}`}>Sugerencias para el Supervisor</label>
-                        </div>
-                    </div>
-                    <div className="modal-footer">
-                        <button type="button" id={derivarId} className="btn btn-warning" data-bs-dismiss="modal">Enviar</button>
-                    </div>
-                    </div>
-                </div>
             </div>
         </div>
         
     );
 };
 
-export default Solicitud;
+export default SolicitudSuper;
