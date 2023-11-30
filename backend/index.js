@@ -6,7 +6,7 @@ const connection = require("./db");
 const userRoutes = require('./routes/user');
 const authRouter = require('./routes/auth');
 const solicitudRouter = require("./routes/solicitudes");
-const userCrud = require("./routes/solicitudesCRUD")
+const userCrud = require("./routes/userCRUD")
 
 
 //conection dataBase
