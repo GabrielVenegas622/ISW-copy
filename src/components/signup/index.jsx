@@ -92,7 +92,7 @@ const Signup = () => {
 							required
 							className={styles.input}
 						>
-							<option value="" disabled>Select Role</option>
+							<option value="" >Seleccionar Rol</option>
 							<option value="supervisor">Supervisor</option>
 							<option value="comercial">Área Comercial</option>
 							<option value="ventas">Área de Ventas</option>
