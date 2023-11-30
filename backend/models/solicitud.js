@@ -52,7 +52,6 @@ const solicitudSchema = new mongosee.Schema({
     },
     Comentario: {
         type:String,
-        required: true
     },
     Estado: {
         type:String,
