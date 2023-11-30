@@ -18,6 +18,7 @@ function NavBarSupervisor() {
             <Nav.Link href="simulacion">Simulación Préstamo</Nav.Link>
             <Nav.Link href="registroPrestamo">Registrar Préstamo</Nav.Link>
             <Nav.Link href="solicitudes">Solicitudes</Nav.Link>
+            <Nav.Link href="signup">Crear Usuarios</Nav.Link>
 
           </Nav>
           <Button variant= "outline-light" onClick= {handleLogout}>
