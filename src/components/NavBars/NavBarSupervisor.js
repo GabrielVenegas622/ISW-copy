@@ -11,13 +11,14 @@ function NavBarSupervisor() {
     window.location.reload();
   }
   return (
-    <Navbar bg="dark" data-bs-theme="dark">
+    <Navbar bg="dark" data-bs-theme="dark" >
         <Container>
           <Navbar.Brand href="home">Financiera la clave</Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link href="simulacion">Simulación Préstamo</Nav.Link>
             <Nav.Link href="registroPrestamo">Registrar Préstamo</Nav.Link>
             <Nav.Link href="solicitudes">Solicitudes</Nav.Link>
+            <Nav.Link href="solicitudesSuper">SolicitudesSuper</Nav.Link>
             <Nav.Link href="signup">Crear Usuarios</Nav.Link>
 
           </Nav>

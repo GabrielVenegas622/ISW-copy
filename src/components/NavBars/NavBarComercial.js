@@ -16,7 +16,6 @@ function NavBarComercial() {
           <Navbar.Brand href="home">Financiera la clave</Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link href="solicitudes">Solicitudes</Nav.Link>
-
           </Nav>
           <Button variant= "outline-light" onClick= {handleLogout}>
             Logout

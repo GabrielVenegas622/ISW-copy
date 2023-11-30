@@ -25,6 +25,14 @@ const actualizarSolicitud = async (req,res) =>{
     .catch((error) => res.json({message:error}));
 }
 
+const actualizarComentario = async (req,res) =>{
+    const {id} = req.params;
+    const {Comentario} = req.body;
+    solicitudSchema.updateOne({_id: id}, {$set: {Comentario}})
+    .then((data) => res.json(data))
+    .catch((error) => res.json({message:error}));
+}
+
 const deleteSolicitud = async (req, res) =>{
    const solicitud = await solicitudSchema.findByIdAndDelete(req.params.id);
    if(!solicitud) return res.status(404).res({message: "No se encontró el tutor"})
@@ -54,4 +62,4 @@ const validateSol = (data) =>{
     return schema.validate(data);
 }
 
-module.exports = {addSolicitud, getAllSolicitudes, actualizarSolicitud, deleteSolicitud}
+module.exports = {addSolicitud, getAllSolicitudes, actualizarSolicitud, deleteSolicitud, actualizarComentario}

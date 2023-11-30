@@ -1,10 +1,10 @@
-import Solicitud from "./solicitud/Solicitud";
+import SolicitudSuper from "./solicitud/SolicitudSuper";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Solicitudes } from "../Api/solicitudesFront";
 import { useState, useEffect } from "react";
 
 
-function H2() {
+function H2Super() {
     const [data, setData] = useState([]);
     const [update, setUpdate] = useState(0);
 
@@ -33,10 +33,10 @@ function H2() {
             //console.log("AAAAAAAAAAAAAA",data)
             //console.log(Array.isArray(data.solicitudes))
           content = data.map((obj, index) => {
-            if(obj.Estado === "0"){
+            if(obj.Estado === "2"){
               return (
                 <div className='col' key={index}>
-                  <Solicitud
+                  <SolicitudSuper
                     index={index}
                     name={obj.nombre}
                     apellido={obj.apellido}
@@ -51,6 +51,7 @@ function H2() {
                     ValorCreditoCLP={obj.ValorCreditoCLP}
                     update={update}
                     setUpdate= {setUpdate}
+                    comentario={obj.Comentario}
                     id={obj._id}
                   />
                 </div>
@@ -75,4 +76,4 @@ function H2() {
         desplegarSolicitudes(data)
     );
 };
-export default H2;
+export default H2Super;
