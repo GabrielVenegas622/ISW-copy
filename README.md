@@ -22,6 +22,7 @@ Entrega H4: En el video se explica como se puede probar las vistas y la explicac
 * En la carpeta backend están las conexiones a la base de datos y las api que utilizamos, todo esto utilizando expressJs.
 * En la capeta principal es donde está el frontend, todos los componenetes y archivos utilizados.
 * Para el correcto funcionamiento, hay que seguir los siguientes pasos:
-* Estar dentro de la carpeta del backend, utilizar "npm instal" para instalar dependencias, una vez hecho esto escribir "npm run start" en consola para ejecutar el backend.
-* En la caprta principal, igualmente instalar dependencias con "npm instal" , luego de esto ejecutar "npm start".
+* Estar dentro de la carpeta del backend, escribir "npm instal" para instalar dependencias, una vez hecho esto escribir "npm run start" en consola para ejecutar el backend.
+* En la caprta principal, igualmente instalar dependencias con "npm instal" , luego de esto ejecutar "npm start", con esto ejecutamos el front end y podemos utilizar la página.
+
 
