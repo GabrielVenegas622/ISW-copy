@@ -58,11 +58,11 @@ function SolicitudAprobada(prop){
     }, [update,]);
     
     return (
-        <div className="card border-warning text-center mb-3" >
+        <div className="card border-primary text-center mb-3" >
             <div className="card-body ">
                 <h5 className="card-title">{name}</h5>
                 <p className="card-text">Categoría {category}</p>
-                <button type="button" className="btn btn-warning " data-bs-toggle="modal" data-bs-target={`#${modalId}`}> Revisar </button>{' '}
+                <button type="button" className="btn btn-primary " data-bs-toggle="modal" data-bs-target={`#${modalId}`}> Revisar </button>{' '}
                 
 
                     <div className="modal fade" id={modalId} data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby={modalId} aria-hidden="true">
@@ -74,8 +74,8 @@ function SolicitudAprobada(prop){
                         </div>
                         <div className="modal-body">
 
-                        <div className="card border-warning mb-3">
-                            <div className="card-header border-warning">Información Cliente:</div>
+                        <div className="card border-primary mb-3">
+                            <div className="card-header border-primary">Información Cliente:</div>
                             <div className="card-body">
                                 <div className="container">
                                     <div className="row justify-content-md-center">
@@ -89,7 +89,7 @@ function SolicitudAprobada(prop){
                                                     <h6 className="card-title">{Comuna}, {Ciudad}</h6>
                                                 </div>
                                     </div>
-                                    <h6 className="card-title text-warning">Solicitud de Préstamo:</h6>
+                                    <h6 className="card-title text-primary">Solicitud de Préstamo:</h6>
                                     <div className="card">
                                         <ul className="list-group list-group-flush">
                                             <li className="list-group-item">
@@ -124,12 +124,6 @@ function SolicitudAprobada(prop){
                             </div>
                             </div>
                         </div>
-                        <h4 className="border-warning">Sugerencia a revisar: </h4>
-                            <div class="card">
-                                <div class="card-body">
-                                {comentario}
-                                </div>
-                            </div>
                         </div>
                             <div className="modal-footer">
                                 <button type="button" id={revisarId} className="btn btn-secondary" data-bs-dismiss="modal">Revisión</button>
