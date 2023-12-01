@@ -25,4 +25,9 @@ Entrega H4: En el video se explica como se puede probar las vistas y la explicac
 * Estar dentro de la carpeta del backend, escribir "npm instal" para instalar dependencias, una vez hecho esto escribir "npm run start" en consola para ejecutar el backend.
 * En la caprta principal, igualmente instalar dependencias con "npm instal" , luego de esto ejecutar "npm start", con esto ejecutamos el front end y podemos utilizar la página.
 
+## Usuarios para utilizar las vistas
+
+* Usuario: supervisor@gmail.com  Contraseña: supervisor
+* Usuario: venta@gmail.com Contraseña: venta
+* Usuario: comercial@gmail.com Contraseña: comercial
 
