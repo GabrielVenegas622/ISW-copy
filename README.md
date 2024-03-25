@@ -2,10 +2,17 @@
 
 ## Integrantes del GRUPO
 
-* Gabriel Venegas   -  202104676-3
-* Diego Debarca     -  202104664-k
+* Diego Debarca      -  202104664-k
+* Francisca Figueroa -  202104599-6
+* Sofia Rios         -  202104650-k
+* Gabriel Venegas    -  202104676-3
 
-* **Tutor**: Felipe Márquez Milán
+* **Tutor**: Eduardo Mendoza
+
+## Retrospectiva del proyecto.
+Para visualizar la Retrospectiva del proyecto se puede realizar mediante el siguiente [enlace](https://gitlab.inf.utfsm.cl/diego.debarca/inf255-2023-2-grupo-05/-/wikis/Retrospectiva)
+
+
 
 ## Wiki
 Puede acceder a la _Wiki_ mediante el siguiente [enlace](https://gitlab.inf.utfsm.cl/diego.debarca/inf255-2023-2-grupo-05/-/wikis/Home)
