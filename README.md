@@ -1,4 +1,4 @@
-# INF255-2023-2-GRUPO-05
+# INF236-2023-2-GRUPO-05
 
 ## Integrantes del GRUPO 2024-1 Ingenería de Software
 
