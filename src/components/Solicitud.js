@@ -15,7 +15,8 @@ function GridComplexExample() {
   const {register, handleSubmit, formState: {errors}} = useForm();
   const [errorMessage, setErrorMessage] = useState('');
   const [correctMessage, setcorrectMessage] = useState('');
-
+  const nombre = localStorage.getItem("nombre")
+  const apellido = localStorage.getItem("apellido")
 
   
   const onSubmit = handleSubmit( async (values) =>{
@@ -27,22 +28,19 @@ function GridComplexExample() {
       const plazo = values.Plazo;
       let cuota = (valorCredito) / ((1-((1+tasaMensual/100)**(-plazo)))/(tasaMensual/100))
       cuota = cuota.toFixed(2);
-      console.log(cuota);
       values.ValorCreditoUF = cuota;
-      console.log(typeof cuota);
-      console.log(plazo);
-      console.log(tasaMensual);
-      console.log(valorCredito);
+
       const valorCLP = Math.round(cuota * UF);
-      console.log("VALOR UF" + UF);
+
       values.ValorCreditoCLP = valorCLP;
+      values.nombreAgente = nombre;
+      values.apellidoAgente = apellido;
       await agregarSolicitud(values);
-      console.log("Solicitud Agregada correctamente", values);
+
       setErrorMessage('');
       setcorrectMessage('Solicitud agregada exitosamente')
     } catch (error) {
       setcorrectMessage('');
-      console.log("Error al mandar la solicitud", error);
       setErrorMessage(error.response.data.message);
     }
     

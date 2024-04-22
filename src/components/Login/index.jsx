@@ -22,6 +22,8 @@ const Login = () => {
 			const { data: res } = await axios.post(url, data);
 			localStorage.setItem("token", res.data);
 			localStorage.setItem("role", res.tipo);
+			localStorage.setItem("nombre", res.firstName)
+			localStorage.setItem("apellido", res.lastName)
 			window.location = "/";
 
 			

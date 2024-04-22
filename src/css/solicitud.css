@@ -15,3 +15,17 @@
     margin-bottom: 20px;
     margin-top: 20px;
 }
+
+.filtro{
+    display:flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.select{
+    font-size: 20px;
+    padding: 5px;
+}
+.input{
+    font-size: 20px;
+}

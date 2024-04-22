@@ -7,14 +7,25 @@ import { useState, useEffect } from "react";
 function H2Super() {
     const [data, setData] = useState([]);
     const [update, setUpdate] = useState(0);
+    const [filtro, setFiltro] = useState('')
+    const [busqueda, setBusqueda] = useState('')
 
     useEffect(() => {
         const fetchData = async () => {
           try {
             const result = await Solicitudes();
             
-            setData(result.data.solicitudes);
-            console.log("los miau 🤨", result.data.solicitudes);
+            setData(result.data.solicitudes.filter(obj => {
+              console.log("Se llama a la func")
+              console.log( "Busqueda",busqueda)
+              console.log("Filtro",filtro)
+              if (filtro === 'cliente') {
+                return obj.nombre.toLowerCase().includes(busqueda.toLowerCase());
+              } else if (filtro === 'agente') {
+                return obj.nombreAgente.toLowerCase().includes(busqueda.toLowerCase());
+              }
+              return true;
+            }));
 
           } catch (error) {
             console.error('Error fetching data:', error.message);
@@ -53,6 +64,8 @@ function H2Super() {
                     setUpdate= {setUpdate}
                     comentario={obj.Comentario}
                     id={obj._id}
+                    nombreAgente={obj.nombreAgente}
+                    apellidoAgente={obj.apellidoAgente}
                   />
                 </div>
               );
@@ -63,6 +76,21 @@ function H2Super() {
         return (
           <div className="container">
             <h1>Solicitudes Pendientes: </h1>
+            <div className="filtro" >
+              <form>
+                <select className="select" onChange={(e) => setFiltro(e.target.value)}>
+                  <option value="">Filtrar por</option>
+                  <option value="cliente">Cliente</option>
+                  <option value="agente">Agente a cargo</option>
+                </select>
+                <input
+                  placeholder="Ingrese nombre"
+                  className="input"
+                  onChange={(e) => {setBusqueda(e.target.value); 
+                  setUpdate(prev => prev+1);}}
+                />
+              </form>
+            </div>
             <div className="row row-cols-1 row-cols-md-4 g-4">
               {content}
             </div>

@@ -5,7 +5,7 @@ import { actualizarSolicitud, actualizarComment} from "../../Api/solicitudesFron
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function Solicitud(prop){
-    const {name, category, index, apellido, RUT, comentario, Comuna, Ciudad, Monto, Plazo, Tasa, ValorCreditoUF, ValorCreditoCLP, update, setUpdate, id} = prop;
+    const {name, category, index, apellido, RUT, comentario, Comuna, Ciudad, Monto, Plazo, Tasa, ValorCreditoUF, ValorCreditoCLP, update, setUpdate, id, nombreAgente, apellidoAgente} = prop;
 
     const modalId = `staticBackdrop-${id}${index}`;
     const modal2ndId = `staticBackdrop-${id}${index}2nd`;
@@ -87,8 +87,10 @@ function Solicitud(prop){
     return (
         <div className="card border-success text-center mb-3" >
             <div className="card-body">
-                <h5 className="card-title">{name}</h5>
+                <h5 className="card-title">{name} {apellido}</h5>
                 <p className="card-text">Categoría {category}</p>
+                <p className="card-text">Agente: {nombreAgente} {apellidoAgente}</p>
+                <p className="card-text"></p>
                 <button type="button" className="btn btn-success" data-bs-toggle="modal" data-bs-target={`#${modalId}`}> Revisar </button>
                     <div className="modal fade" id={modalId} data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby={modalId} aria-hidden="true">
                     <div className="modal-dialog">

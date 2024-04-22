@@ -57,6 +57,8 @@ const validateSol = (data) =>{
         ValorCreditoUF: Joi.number().optional().label("Valor Credito UF"),
         ValorCreditoCLP: Joi.number().optional().label("Valor Credito CLP"),
         Estado: Joi.number().optional().label("Estado"),
+        nombreAgente: Joi.string().optional().label("Nombre Agente"),
+        apellidoAgente: Joi.string().optional().label("Apellido Agente"),
     });
 
     return schema.validate(data);

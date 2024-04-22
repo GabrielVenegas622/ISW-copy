@@ -7,6 +7,8 @@ function NavBarComercial() {
   const handleLogout = () =>{
     localStorage.removeItem("token");
     localStorage.removeItem("role");
+    localStorage.removeItem("nombre")
+    localStorage.removeItem("apellido")
     navigate("/");
     window.location.reload();
   }

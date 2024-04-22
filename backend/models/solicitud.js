@@ -62,6 +62,14 @@ const solicitudSchema = new mongosee.Schema({
     },
     ValorCreditoCLP:{
         type: Number
+    },
+    nombreAgente:{
+        type:String,
+        required:true
+    },
+    apellidoAgente:{
+        type: String,
+        required:true
     }
 },{
     timestamps:true
