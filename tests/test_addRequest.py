@@ -24,8 +24,7 @@ class addRequestTest(unittest.TestCase):
             'Monto': 10000,
             'Tasa': 5,
             'Plazo': 12,
-            'Categoria': 'A',
-            'agenteComercial': 'Pepito Pepe'
+            'Categoria': 'A'
         }
         
         # Incomplete data request
@@ -73,7 +72,6 @@ class addRequestTest(unittest.TestCase):
 
         response = requests.post(self.base_url, json=self.invalid_source_request_data)
         self.assertEqual(response.status_code, 400)     
-   
 
 
 if __name__ == '__main__':
