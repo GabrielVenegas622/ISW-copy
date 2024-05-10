@@ -38,13 +38,18 @@ function H2Aprobada() {
       }, [,update]);
 
     function desplegarSolicitudes(data) {
+        const role = localStorage.getItem("role");
         let content;
-      
+        let aux1= '', aux2='';
         if (!data) {
           content = <p>No hay solicitudes disponibles.</p>;
         } else {
           content = data.map((obj, index) => {
-            if(obj.Estado === "1"){
+            if (role === "supervisor"){
+              aux1 = "Agente Comercial: "
+              aux2 = obj.agenteComercial
+            }
+            if(obj.Estado === "1" ){
               return (
                 <div className='col' key={index}>
                   <SolicitudAprobada
@@ -66,6 +71,8 @@ function H2Aprobada() {
                     id={obj._id}
                     nombreAgente={obj.nombreAgente}
                     apellidoAgente={obj.apellidoAgente}
+                    ac={aux1}
+                    nombreAC={aux2}
                   />
                 </div>
               );

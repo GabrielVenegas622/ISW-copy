@@ -7,8 +7,8 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import '../css/solicitud.css'
 import { useForm } from 'react-hook-form';
 import { agregarSolicitud } from '../Api/solicitudesFront';
-import { useState } from 'react';
-import { fetchUFValue } from '../Api/solicitudesFront';
+import { useState, useEffect} from 'react';
+import { fetchUFValue, fetchAgents } from '../Api/solicitudesFront';
 
 
 function GridComplexExample() {
@@ -35,6 +35,7 @@ function GridComplexExample() {
       values.ValorCreditoCLP = valorCLP;
       values.nombreAgente = nombre;
       values.apellidoAgente = apellido;
+      console.log(values)
       await agregarSolicitud(values);
 
       setErrorMessage('');
@@ -43,8 +44,63 @@ function GridComplexExample() {
       setcorrectMessage('');
       setErrorMessage(error.response.data.message);
     }
-    
   })
+
+  const obtenerData = async() => {
+    try{
+      const users = await fetchAgents();
+      return users;
+
+    } catch (error) {
+      console.log('error al obtener los usuarios', error)
+      return error
+    }
+  }
+
+  // const data = obtenerData().then(data =>{
+  //   try {
+  //     console.log("aa",data)
+  //   } catch (error) {
+  //     console.error("errorrr", error)
+  //   }
+  // })
+
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    obtenerData().then(data => {
+      setData(data);
+    }).catch(error => {
+      console.error("Error al obtener los datos:", error);
+      setData([]); // Si ocurre un error, establece data como un array vacío
+    });
+  }, []);
+
+
+
+
+    
+  
+  console.log("aaaaa",data)
+  // function desplegarOpciones() {
+    
+  //   let content
+  //   const opciones = obtenerData().then(users => {
+  //     const userNames = users.map((user, index) => (
+  //       <div key={index}>miau miau wof</div>
+  //     ));
+  //     //console.log("aaaaaa",userNames)
+  //     return userNames;
+  //   }).catch(error => {
+  //     content = <p>No existen agentes para derivar.</p>;
+  //     console.error("Error al obtener usuarios:", error);
+  //   });
+
+  //   return opciones;
+  // }
+
+  // const agentesComerciales = desplegarOpciones()
+  // console.log("Agentes comerciales",agentesComerciales)
 
   return (
     <Container className='styledContainer'>
@@ -127,9 +183,28 @@ function GridComplexExample() {
           </Form.Group>
         </Row>
 
-        <Button type="submit" style={{ marginTop: '20px', marginBottom: '20px' }}>
-          Generar solicitud
-        </Button>
+        <Row>
+          <div class="col">
+            <Form.Group as={Col} controlId="formGridState">
+            <Form.Label>Ejecutivo a cargo</Form.Label>
+              <Form.Select {...register('agenteComercial')} defaultValue="Choose...">
+                <option>Selecciona</option>
+                {Array.isArray(data) ?
+                  data.map((user, index) => (
+                    <option key={index}>{user.firstName+ " "+ user.lastName}</option>
+                )):
+                  <option> No se encontraron datos</option>}
+
+              </Form.Select>
+            </Form.Group>
+          </div>
+          <div class="col">
+            <Button type="submit" style={{ marginTop: '20px', marginBottom: '20px' }}>
+              Generar solicitud
+            </Button>
+          </div>
+        </Row>
+        
       </Form>
     </Container>
   );

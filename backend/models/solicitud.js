@@ -70,6 +70,10 @@ const solicitudSchema = new mongosee.Schema({
     apellidoAgente:{
         type: String,
         required:true
+    },
+    agenteComercial:{
+        type:String,
+        required:true
     }
 },{
     timestamps:true

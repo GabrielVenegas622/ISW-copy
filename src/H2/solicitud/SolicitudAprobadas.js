@@ -5,7 +5,7 @@ import { actualizarSolicitud, actualizarComment, deleteSolicitud} from "../../Ap
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function SolicitudAprobada(prop){
-    const {name, category, index, apellido, RUT, comentario, Comuna, Ciudad, Monto, Plazo, Tasa, ValorCreditoUF, ValorCreditoCLP, update, setUpdate, id, nombreAgente, apellidoAgente} = prop;
+    const {name, category, index, apellido, RUT, comentario, Comuna, Ciudad, Monto, Plazo, Tasa, ValorCreditoUF, ValorCreditoCLP, update, setUpdate, id, nombreAgente, apellidoAgente, ac, nombreAC} = prop;
 
     const modalId = `staticBackdrop-Ap${id}${index}`;
     const revisarId = `staticBackdrop-revisar${id}${index}`;
@@ -62,7 +62,8 @@ function SolicitudAprobada(prop){
             <div className="card-body ">
                 <h5 className="card-title">{name}</h5>
                 <p className="card-text">Categoría {category}</p>
-                <p className="card-text">Agente: {nombreAgente} {apellidoAgente}</p>
+                <p className="card-text">Agente Venta: {nombreAgente} {apellidoAgente}</p>
+                <p className="card-text">{ac}{nombreAC}</p>
                 <button type="button" className="btn btn-primary " data-bs-toggle="modal" data-bs-target={`#${modalId}`}> Revisar </button>{' '}
                 
 

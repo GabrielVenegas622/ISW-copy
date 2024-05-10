@@ -59,6 +59,7 @@ const validateSol = (data) =>{
         Estado: Joi.number().optional().label("Estado"),
         nombreAgente: Joi.string().optional().label("Nombre Agente"),
         apellidoAgente: Joi.string().optional().label("Apellido Agente"),
+        agenteComercial: Joi.string().optional().label("Agente Comercial"),
     });
 
     return schema.validate(data);

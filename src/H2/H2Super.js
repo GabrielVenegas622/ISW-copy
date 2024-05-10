@@ -36,7 +36,9 @@ function H2Super() {
       }, [,update]);
 
     function desplegarSolicitudes(data) {
+      const role = localStorage.getItem("role");
         let content;
+        let aux1= '', aux2='';
       
         if (!data) {
           content = <p>No hay solicitudes disponibles.</p>;
@@ -44,6 +46,10 @@ function H2Super() {
             //console.log("AAAAAAAAAAAAAA",data)
             //console.log(Array.isArray(data.solicitudes))
           content = data.map((obj, index) => {
+            if (role === "supervisor"){
+              aux1 = "Agente Comercial: "
+              aux2 = obj.nombreAgente
+            }
             if(obj.Estado === "2"){
               return (
                 <div className='col' key={index}>
@@ -66,6 +72,8 @@ function H2Super() {
                     id={obj._id}
                     nombreAgente={obj.nombreAgente}
                     apellidoAgente={obj.apellidoAgente}
+                    ac={aux1}
+                    nombreAC={obj.agenteComercial}
                   />
                 </div>
               );

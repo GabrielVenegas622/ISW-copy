@@ -10,6 +10,11 @@ function H2() {
   const [filtro, setFiltro] = useState('')
   const [busqueda, setBusqueda] = useState('')
 
+  const role = localStorage.getItem("role");
+  const nombre = localStorage.getItem("nombre");
+  const apellido = localStorage.getItem("apellido");
+  const nombreCompleto = nombre+" "+apellido
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -46,12 +51,19 @@ function H2() {
 
   function desplegarSolicitudes(data) {
     let content;
+    let aux1= '', aux2='';
 
     if (!data) {
       content = <p>No hay solicitudes disponibles.</p>;
     } else {
       content = data.map((obj, index) => {
-        if (obj.Estado === "0") {
+        let aux3=nombreCompleto;
+        if (role === "supervisor"){
+          aux1 = "Agente Comercial: "
+          aux2 = obj.agenteComercial
+          aux3 = obj.agenteComercial
+        }
+        if (obj.Estado === "0" && obj.agenteComercial === aux3) {
           return (
             <div className='col' key={index}>
               <Solicitud
@@ -72,6 +84,8 @@ function H2() {
                 id={obj._id}
                 nombreAgente={obj.nombreAgente}
                 apellidoAgente={obj.apellidoAgente}
+                ac={aux1}
+                nombreAC={aux2}
               />
             </div>
           );

@@ -5,7 +5,7 @@ import { actualizarSolicitud, actualizarComment} from "../../Api/solicitudesFron
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function SolicitudSuper(prop){
-    const {name, category, index, apellido, RUT, comentario, Comuna, Ciudad, Monto, Plazo, Tasa, ValorCreditoUF, ValorCreditoCLP, update, setUpdate, id, nombreAgente, apellidoAgente} = prop;
+    const {name, category, index, apellido, RUT, comentario, Comuna, Ciudad, Monto, Plazo, Tasa, ValorCreditoUF, ValorCreditoCLP, update, setUpdate, id, nombreAgente, apellidoAgente, ac, nombreAC} = prop;
 
     const modalId = `staticBackdrop-SU${id}${index}`;
     const aprobarId = `staticBackdrop-aprobarSU${id}${index}`;
@@ -62,7 +62,8 @@ function SolicitudSuper(prop){
             <div className="card-body ">
                 <h5 className="card-title">{name}</h5>
                 <p className="card-text">Categoría {category}</p>
-                <p className="card-text">Agente: {nombreAgente} {apellidoAgente}</p>
+                <p className="card-text">Agente Venta: {nombreAgente} {apellidoAgente}</p>
+                <p className="card-text">{ac}{nombreAC}</p>
                 <button type="button" className="btn btn-warning " data-bs-toggle="modal" data-bs-target={`#${modalId}`}> Revisar </button>
                     <div className="modal fade" id={modalId} data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby={modalId} aria-hidden="true">
                     <div className="modal-dialog">

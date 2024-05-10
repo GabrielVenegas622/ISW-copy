@@ -3,13 +3,26 @@ const Joi = require("joi");
 
 const getAllUsers = async (req, res) => {
     try {
-        const data = await User.find();
+        const data = await User.find()
         res.json({ users: data });
     } catch (error) {
         console.error("Error al obtener usuarios:", error.message);
         res.status(500).json({ error: "Hubo un problema al obtener los usuarios." });
     }
 };
+
+const getComercial = async(req, res) =>{
+    try {
+        const {rol} = req.params;
+        const data = await User.find({role: rol});
+        console.log(rol)
+        res.json({ users: data });
+        
+    } catch (error) {
+        console.error("Error al obtener usuarios:", error.message);
+        res.status(500).json({ error: "Hubo un problema al obtener los usuarios." });
+    }
+}
 
 const actualizarUsuario = async (req,res) =>{
     const tutor = await User.findByIdAndUpdate(req.params.id, req.body, {new:true})
@@ -46,4 +59,4 @@ const deleteUser= async (req, res) =>{
 //     return schema.validate(data);
 // }
 
-module.exports = {getAllUsers, actualizarUsuario, deleteUser}
+module.exports = {getAllUsers, actualizarUsuario, deleteUser, getComercial}

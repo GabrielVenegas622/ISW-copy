@@ -20,4 +20,17 @@ export const fetchUFValue = async () => {
       return null;
     }
 };
+
+export const fetchAgents = async () => {
+    try{
+      const response = await fetch('http://localhost:8000/api/getUsersByRol/comercial');
+      const data = await response.json();
+      const users = data.users
+      return users;
+      /* hay que ver como manejar arreglos xd*/
+    } catch (error) {
+      console.error('Error:', error);
+      return null;
+    }
+}
   
