@@ -1,5 +1,6 @@
 const solicitudSchema = require("../models/solicitud")
 const Joi = require("joi");
+const mongoose = require('mongoose');
 
 const addSolicitud = async (req,res) =>{
     const {error} = validateSol(req.body);
@@ -20,14 +21,30 @@ const getAllSolicitudes =  async (req,res) =>{
 const actualizarSolicitud = async (req,res) =>{
     const {id} = req.params;
     const {Estado} = req.body;
-    solicitudSchema.updateOne({_id: id}, {$set: {Estado}})
-    .then((data) => res.json(data))
-    .catch((error) => res.json({message:error}));
+
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(400).json({ message: 'Invalid ID format' });
+    }
+
+    if (![0, 1, 2].includes(Estado)) {
+        return res.status(400).json({ message: 'Invalid Estado value' });
+    }
+
+    try {
+        const result = await solicitudSchema.updateOne({ _id: id }, { $set: { Estado } });
+        if (result.matchedCount === 0) {
+            return res.status(404).json({ message: 'ID not found' });
+        }
+        res.json(result);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
 }
 
 const actualizarComentario = async (req,res) =>{
     const {id} = req.params;
     const {Comentario} = req.body;
+    
     solicitudSchema.updateOne({_id: id}, {$set: {Comentario}})
     .then((data) => res.json(data))
     .catch((error) => res.json({message:error}));
@@ -59,7 +76,7 @@ const validateSol = (data) =>{
         Estado: Joi.number().optional().label("Estado"),
         nombreAgente: Joi.string().optional().label("Nombre Agente"),
         apellidoAgente: Joi.string().optional().label("Apellido Agente"),
-        agenteComercial: Joi.string().optional().label("Agente Comercial"),
+        agenteComercial: Joi.string().required().invalid("Selecciona").label("Agente Comercial"),
     });
 
     return schema.validate(data);
