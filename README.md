@@ -24,7 +24,7 @@ Entrega H4: En el video se explica como se puede probar las vistas y la explicac
 * [Entrega H4](https://youtu.be/e84w7gc4u50)
 * [Entrega Final](https://youtu.be/UBU30RI2tGU)
 
-## Videos INF236-2023-2-GRUPO-05
+## Videos INF255
 * [Entrega H4](https://youtu.be/8yywpZOXDuY)
 
 ## Carpetas
