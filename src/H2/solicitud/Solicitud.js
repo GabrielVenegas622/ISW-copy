@@ -39,7 +39,7 @@ function Solicitud(prop){
       const handleDerivarClick = async () => {
         try {
           console.log(`SOLICITUD de ${name} ${apellido} DERIVADA!`);
-          var sugerencias = document.getElementById(`floatingTextarea${derivarId}`).value;
+          let sugerencias = document.getElementById(`floatingTextarea${derivarId}`).value;
 
           console.log('Sugerencias:', sugerencias);
           await actualizarSolicitud(id, '2');
