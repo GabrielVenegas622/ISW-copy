@@ -10,7 +10,3 @@ Este issue se refiere a una vulnerabilidad de seguridad al momento del inicio de
 **Descripción**: 
 Este issue se refiere a un método que no sigue las convenciones de nomenclatura.
 **Severidad**: Minor
-
-## Recomendaciones
-- **Issue 1**: Actualizar el método de login para evitar la vulnerabilidad X. Esto será abordado en la siguiente actualización.
-- **Issue 2**: Renombrar el método para seguir las convenciones de nomenclatura. No es prioritario pero se incluirá en mejoras futuras.
