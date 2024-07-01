@@ -2,9 +2,12 @@
 
 ## Issue 1:
 Change this code to not construct database queries directly from user-controlled data.
+
 **Descripción**: 
 Este issue se refiere a una vulnerabilidad de seguridad al momento del inicio de sesión. Más específicamente trata de que el usuario puede ingresar tipos de datos distintos a los esperados siendo propenso a ataques de injeccion.
+
 **Severidad**: High
+
 
 ## Issue 2
 **Descripción**: 
